@@ -78,7 +78,9 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Release APK
-        run: ./gradlew assembleUniversalGmsRelease -x lint -x lintVitalRelease --no-configuration-cache --console=plain --max-workers=4
+        # Convx 有 flavor 矩阵 (universal/arm64/... x foss/gms), 排除具体变体的
+        # lintVital 任务, 避免歧义任务名 (lintVitalRelease) 导致构建失败
+        run: ./gradlew assembleUniversalGmsRelease -x lint -x lintVitalUniversalGmsRelease --no-configuration-cache --console=plain --max-workers=4
         env:
           STORE_PASSWORD: ${{ env.STORE_PASSWORD }}
           KEY_ALIAS: ${{ env.KEY_ALIAS }}
