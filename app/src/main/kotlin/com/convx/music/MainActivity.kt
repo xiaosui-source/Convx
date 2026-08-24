@@ -8,6 +8,7 @@ package com.convx.music
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.content.pm.PackageManager
@@ -306,6 +307,7 @@ import com.convx.music.constants.IosOverscrollKey
 import com.convx.music.ui.utils.rememberIosOverscrollFactory
 import com.convx.music.utils.reportException
 import com.convx.music.utils.setAppLocale
+import com.convx.music.utils.applyForcedLocale
 import com.convx.music.viewmodels.HistoryViewModel
 import com.convx.music.ui.component.floatingtabbar.rememberFloatingTabBarScrollConnection
 import com.convx.music.viewmodels.HomeViewModel
@@ -443,6 +445,15 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var listenTogetherManager: com.convx.music.listentogether.ListenTogetherManager
 
+    /**
+     * Pin the Activity's configuration to the app language (default: Simplified
+     * Chinese) so the UI renders in zh-CN even when the system language is not
+     * Chinese. Applies on every API level, including Android 13+.
+     */
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(newBase.applyForcedLocale())
+    }
+
     private var pendingIntent: Intent? = null
 
     private var playerConnection by mutableStateOf<PlayerConnection?>(null)
@@ -550,7 +561,7 @@ class MainActivity : ComponentActivity() {
             val locale = dataStore[AppLanguageKey]
                 ?.takeUnless { it == SYSTEM_DEFAULT }
                 ?.let { Locale.forLanguageTag(it) }
-                ?: Locale.getDefault()
+                ?: Locale.forLanguageTag("zh-CN")
             setAppLocale(this, locale)
         }
 

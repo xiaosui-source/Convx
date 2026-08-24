@@ -393,7 +393,7 @@ fun SpotifyScreen(
     state.errorMessage?.let { error ->
         DefaultDialog(
             onDismiss = { viewModel.dismissError() },
-            title = { Text("Error") },
+            title = { Text("错误") },
             buttons = {
                 TextButton(onClick = { viewModel.dismissError() }) {
                     Text(stringResource(android.R.string.ok))

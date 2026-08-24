@@ -203,15 +203,15 @@ fun LocalMusicScreen(
                                 onDismissRequest = { showSortMenu = false },
                             ) {
                                 DropdownMenuItem(
-                                    text = { Text("Name") },
+                                    text = { Text("名称") },
                                     onClick = { sortMode = LocalSortMode.NAME; showSortMenu = false },
                                 )
                                 DropdownMenuItem(
-                                    text = { Text("Duration") },
+                                    text = { Text("时长") },
                                     onClick = { sortMode = LocalSortMode.DURATION; showSortMenu = false },
                                 )
                                 DropdownMenuItem(
-                                    text = { Text("Recently added") },
+                                    text = { Text("最近添加") },
                                     onClick = { sortMode = LocalSortMode.RECENT; showSortMenu = false },
                                 )
                             }
@@ -253,7 +253,7 @@ fun LocalMusicScreen(
                     OutlinedTextField(
                         value = searchQuery,
                         onValueChange = { searchQuery = it },
-                        placeholder = { Text("Search local music") },
+                        placeholder = { Text("搜索本地音乐") },
                         singleLine = true,
                         modifier = Modifier.fillMaxWidth(),
                     )
@@ -286,7 +286,7 @@ fun LocalMusicScreen(
                             permissionLauncher.launch(permission)
                         },
                     ) {
-                        Text("Grant Permission")
+                        Text("授予权限")
                     }
                 }
             }
@@ -307,7 +307,7 @@ fun LocalMusicScreen(
                     Button(
                         onClick = { viewModel.scanDevice(context) },
                     ) {
-                        Text("Scan Device")
+                        Text("扫描设备")
                     }
                 }
             }
@@ -353,7 +353,7 @@ fun LocalMusicScreen(
                     OutlinedButton(
                         onClick = { viewModel.scanDevice(context) },
                     ) {
-                        Text("Rescan", style = MaterialTheme.typography.labelMedium)
+                        Text("重新扫描", style = MaterialTheme.typography.labelMedium)
                     }
                 }
             }
@@ -387,7 +387,7 @@ fun LocalMusicScreen(
                             modifier = Modifier.size(18.dp),
                         )
                         Spacer(Modifier.width(8.dp))
-                        Text("Play All")
+                        Text("全部播放")
                     }
                     Button(
                         onClick = {
@@ -408,7 +408,7 @@ fun LocalMusicScreen(
                             modifier = Modifier.size(18.dp),
                         )
                         Spacer(Modifier.width(8.dp))
-                        Text("Shuffle")
+                        Text("随机播放")
                     }
                 }
             }

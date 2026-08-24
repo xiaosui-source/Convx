@@ -303,9 +303,9 @@ fun UpdateSettings(
                         if (apkCount > 0) {
                             if (clearDownloadedApks(context)) {
                                 apkCount = 0
-                                Toast.makeText(context, "Deleted successfully", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "删除成功", Toast.LENGTH_SHORT).show()
                             } else {
-                                Toast.makeText(context, "Failed to delete some files", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "删除部分文件失败", Toast.LENGTH_SHORT).show()
                                 apkCount = getDownloadedApkCount(context)
                             }
                         }

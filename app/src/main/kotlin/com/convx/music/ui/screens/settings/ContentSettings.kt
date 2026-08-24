@@ -245,8 +245,9 @@ fun ContentSettings(
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
 
-    // Used only before Android 13
-    val (appLanguage, onAppLanguageChange) = rememberPreference(key = AppLanguageKey, defaultValue = SYSTEM_DEFAULT)
+    // Used only before Android 13. Defaults to Simplified Chinese (forced),
+    // so fresh installs always boot into zh-CN instead of following the system.
+    val (appLanguage, onAppLanguageChange) = rememberPreference(key = AppLanguageKey, defaultValue = "zh-CN")
 
     val (contentLanguage, onContentLanguageChange) = rememberPreference(key = ContentLanguageKey, defaultValue = "system")
     val (contentCountry, onContentCountryChange) = rememberPreference(key = ContentCountryKey, defaultValue = "system")
@@ -370,7 +371,7 @@ fun ContentSettings(
                         value = tempProxyUrl,
                         onValueChange = { tempProxyUrl = it },
                         label = { Text(stringResource(R.string.proxy_url)) },
-                        placeholder = { Text("host:port") },
+                        placeholder = { Text("主机:端口") },
                         modifier = Modifier.fillMaxWidth()
                     )
 
@@ -398,14 +399,14 @@ fun ContentSettings(
                                 value = tempProxyUsername,
                                 onValueChange = { tempProxyUsername = it },
                                 label = { Text(stringResource(R.string.proxy_username)) },
-                                placeholder = { Text("username") },
+                                placeholder = { Text("用户名") },
                                 modifier = Modifier.fillMaxWidth()
                             )
                             OutlinedTextField(
                                 value = tempProxyPassword,
                                 onValueChange = { tempProxyPassword = it },
                                 label = { Text(stringResource(R.string.proxy_password)) },
-                                placeholder = { Text("password") },
+                                placeholder = { Text("密码") },
                                 modifier = Modifier.fillMaxWidth()
                             )
                         }
@@ -820,7 +821,7 @@ fun ContentSettings(
                 ),
                 Material3SettingsItem(
                     icon = painterResource(R.drawable.globe_location_pin),
-                    title = { Text("Suggestions Region") },
+                    title = { Text("推荐地区") },
                     description = {
                         Text(
                             SuggestionRegionSlugToName.getOrElse(suggestionRegion) { "Global Charts" }
@@ -1226,7 +1227,7 @@ fun ContentSettings(
                 Material3SettingsItem(
                     icon = painterResource(R.drawable.lyrics),
                     title = { Text("YouLyPlus") },
-                    description = { Text("LyricsPlus multi-server provider (YouLy+ extension backend)") },
+                    description = { Text("LyricsPlus 多服务器歌词提供方（YouLy+ 扩展后端）") },
                     trailingContent = {
                         Switch(
                             checked = enableYouLyPlus,
@@ -1247,7 +1248,7 @@ fun ContentSettings(
                 Material3SettingsItem(
                     icon = painterResource(R.drawable.lyrics),
                     title = { Text("PaxSenix") },
-                    description = { Text("Apple Music quality synced lyrics with syllable-level timing") },
+                    description = { Text("Apple Music 品质的逐音节同步歌词") },
                     trailingContent = {
                         Switch(
                             checked = enablePaxsenix,
@@ -1268,7 +1269,7 @@ fun ContentSettings(
                 Material3SettingsItem(
                     icon = painterResource(R.drawable.lyrics),
                     title = { Text("Musixmatch") },
-                    description = { Text("Widely used synced lyrics catalog") },
+                    description = { Text("广泛使用的同步歌词库") },
                     trailingContent = {
                         Switch(
                             checked = enableMusixmatch,

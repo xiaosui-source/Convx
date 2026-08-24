@@ -134,7 +134,7 @@ fun SuggestionsTabContent(
                         tracks = suggestionTracks!!,
                         countryCode = regionCode,
                         onTrackClick = { track ->
-                            android.widget.Toast.makeText(context, "Loading ${track.title}...", android.widget.Toast.LENGTH_SHORT).show()
+                            android.widget.Toast.makeText(context, "正在加载 ${track.title}…", android.widget.Toast.LENGTH_SHORT).show()
                             viewModel.playTrack(track, playerConnection)
                         },
                         onMoreClick = {
@@ -150,7 +150,7 @@ fun SuggestionsTabContent(
                     TopArtistsSection(
                         artists = artists,
                         onArtistClick = { artist ->
-                            android.widget.Toast.makeText(context, "Loading ${artist.name}...", android.widget.Toast.LENGTH_SHORT).show()
+                            android.widget.Toast.makeText(context, "正在加载 ${artist.name}…", android.widget.Toast.LENGTH_SHORT).show()
                             viewModel.navigateToArtist(artist, navController)
                         }
                     )
@@ -162,7 +162,7 @@ fun SuggestionsTabContent(
                     TrendingAlbumsSection(
                         albums = albums,
                         onAlbumClick = { album ->
-                            android.widget.Toast.makeText(context, "Loading ${album.title}...", android.widget.Toast.LENGTH_SHORT).show()
+                            android.widget.Toast.makeText(context, "正在加载 ${album.title}…", android.widget.Toast.LENGTH_SHORT).show()
                             viewModel.navigateToAlbum(album, navController)
                         },
                         onMoreClick = {
@@ -178,7 +178,7 @@ fun SuggestionsTabContent(
                     TrendingVideosSection(
                         videos = videos,
                         onVideoClick = { video ->
-                            android.widget.Toast.makeText(context, "Loading video ${video.title}...", android.widget.Toast.LENGTH_SHORT).show()
+                            android.widget.Toast.makeText(context, "正在加载视频 ${video.title}…", android.widget.Toast.LENGTH_SHORT).show()
                             viewModel.playVideo(video, playerConnection)
                         },
                         onMoreClick = {
@@ -203,7 +203,7 @@ fun SuggestionsTabContent(
                             )
                             Spacer(modifier = Modifier.height(16.dp))
                             OutlinedButton(onClick = { viewModel.refresh(regionCode, force = true) }) {
-                                Text("Refresh")
+                                Text("刷新")
                             }
                         }
                     }
@@ -283,7 +283,7 @@ fun TrendingAppleMusicSection(
                         ) {
                             Icon(painterResource(R.drawable.globe_search), null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(24.dp))
                             Spacer(Modifier.width(12.dp))
-                            Text("View more on Apple Music", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold)
+                            Text("在 Apple Music 上查看更多", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold)
                         }
                     } else if (i < displayTracks.size) {
                         val track = displayTracks[i]

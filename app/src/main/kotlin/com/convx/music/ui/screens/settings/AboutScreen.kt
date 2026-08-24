@@ -221,7 +221,7 @@ fun AboutScreen(
                 Material3SettingsItem(
                     icon = painterResource(R.drawable.license_vivi),
                     title = { Text(stringResource(R.string.license)) },
-                    description = { Text("GPL-3.0 • Free Open Source Software") },
+                    description = { Text("GPL-3.0 • 自由开源软件") },
                     onClick = { uriHandler.safeOpenUri(context, "https://github.com/cosmictaserdev-creator/Convx/blob/main/LICENSE") }
                 ),
             )

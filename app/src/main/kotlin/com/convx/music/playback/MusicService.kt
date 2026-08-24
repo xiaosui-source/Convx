@@ -3186,7 +3186,7 @@ class MusicService :
                 // Rate limited or error
                 if (showFeedback) {
                     Handler(Looper.getMainLooper()).post {
-                        Toast.makeText(this@MusicService, "Discord RPC update failed: ${it.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@MusicService, "Discord 状态更新失败：${it.message}", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

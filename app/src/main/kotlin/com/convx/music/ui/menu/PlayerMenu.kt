@@ -1281,7 +1281,7 @@ fun ListenTogetherDialog(
                                 onClick = { listenTogetherManager.forceReconnect() },
                                 modifier = Modifier.weight(1f)
                             ) {
-                                Text("Reconnect", fontWeight = FontWeight.SemiBold)
+                                Text("重新连接", fontWeight = FontWeight.SemiBold)
                             }
                         }
                     }

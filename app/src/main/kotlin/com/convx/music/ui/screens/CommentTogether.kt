@@ -447,7 +447,7 @@ private fun formatMessageWithLinks(text: String): AnnotatedString {
                             `package` = context.packageName
                         }
                         context.startActivity(intent)
-                        Toast.makeText(context, "Playing now", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "正在播放", Toast.LENGTH_SHORT).show()
                     } catch (e: Exception) {
                         context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
                     }

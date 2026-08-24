@@ -721,7 +721,7 @@ fun PlaylistMenu(
                                             }
                                         } catch (e: Exception) {
                                             kotlinx.coroutines.withContext(Dispatchers.Main) {
-                                                Toast.makeText(context, e.message ?: "Failed to sync", Toast.LENGTH_SHORT).show()
+                                                Toast.makeText(context, e.message ?: "同步失败", Toast.LENGTH_SHORT).show()
                                                 isSyncing = false
                                             }
                                         }

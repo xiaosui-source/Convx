@@ -133,6 +133,7 @@ import com.convx.music.constants.IsFirstRunKey
 import com.convx.music.ui.theme.vivimusicTheme
 import com.convx.music.ui.utils.safeOpenUri
 import com.convx.music.utils.dataStore
+import com.convx.music.utils.applyForcedLocale
 import com.convx.music.utils.get
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -144,6 +145,14 @@ data class OnboardingPageInfo(
 )
 
 class WelcomeActivity : ComponentActivity() {
+    /**
+     * Pin the welcome/onboarding screens to the app language (default:
+     * Simplified Chinese) so first-run screens never follow the system language.
+     */
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(newBase.applyForcedLocale())
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
@@ -496,12 +505,12 @@ fun WelcomePagerScreen(onFinished: () -> Unit) {
                     Spacer(modifier = Modifier.height(80.dp))
 
                     Text(
-                        text = "Join our",
+                        text = "加入我们的",
                         style = thinHeaderStyle,
                         color = MaterialTheme.colorScheme.onBackground
                     )
                     Text(
-                        text = "Community",
+                        text = "社区",
                         fontFamily = GoogleSansFlex,
                         fontWeight = FontWeight.Bold,
                         fontSize = 48.sp,
@@ -512,7 +521,7 @@ fun WelcomePagerScreen(onFinished: () -> Unit) {
                     Spacer(modifier = Modifier.height(16.dp))
 
                     Text(
-                        text = "Convx is open-source and depends on community support to grow. Your help makes a difference!",
+                        text = "Convx 是开源的，依靠社区支持成长。你的帮助意义重大！",
                         style = MaterialTheme.typography.bodyLarge.copy(
                             fontFamily = GoogleSansFlex
                         ),
@@ -530,8 +539,8 @@ fun WelcomePagerScreen(onFinished: () -> Unit) {
                             icon = rememberVectorPainter(Icons.Rounded.Star),
                             iconColor = Color(0xFFfff1a8),
                             iconTint = Color(0xFF8d6e00),
-                            title = "Star on GitHub",
-                            description = "Help us reach more people by starring our repository.",
+                            title = "在 GitHub 上点赞",
+                            description = "为我们的仓库点赞，帮助 Convx 触达更多人。",
                             shape = topCardShape,
                             control = {
                                 Icon(
@@ -551,8 +560,8 @@ fun WelcomePagerScreen(onFinished: () -> Unit) {
                             icon = painterResource(com.convx.music.R.drawable.discord),
                             iconColor = Color(0xFF67d4ff),
                             iconTint = Color(0xFF004e5d),
-                            title = "Join Discord",
-                            description = "Get the latest updates and chat with the community.",
+                            title = "加入 Discord",
+                            description = "获取最新动态并与社区交流。",
                             shape = bottomCardShape,
                             control = {
                                 Icon(

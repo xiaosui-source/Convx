@@ -289,7 +289,7 @@ fun ModuleSourceScreen(
                                 strokeWidth = 2.dp,
                             )
                             Spacer(Modifier.width(8.dp))
-                            Text("Fetching from ${loadingSource?.substringAfter("://")?.take(30) ?: "..."}")
+                            Text("正在从 ${loadingSource?.substringAfter("://")?.take(30) ?: "..."} 获取")
                         } else {
                             Text(stringResource(R.string.fetch_modules))
                         }

@@ -173,7 +173,7 @@ class BackupRestoreViewModel @Inject constructor(
             }
         }.onFailure {
             reportException(it)
-            Toast.makeText(context, "Failed to preview CSV file", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "预览 CSV 文件失败", Toast.LENGTH_SHORT).show()
         }
         return CsvImportState()
     }

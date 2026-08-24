@@ -213,22 +213,22 @@ fun ListenTogetherSettings(
                     // Room created toast is shown globally by the client
                 }
                 is ListenTogetherEvent.JoinApproved -> {
-                    Toast.makeText(context, "Joined room: ${event.roomCode}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "已加入房间：${event.roomCode}", Toast.LENGTH_SHORT).show()
                 }
                 is ListenTogetherEvent.JoinRejected -> {
-                    Toast.makeText(context, "Join rejected: ${event.reason}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "加入被拒绝：${event.reason}", Toast.LENGTH_SHORT).show()
                 }
                 is ListenTogetherEvent.JoinRequestReceived -> {
                     Toast.makeText(context, "${event.username} wants to join", Toast.LENGTH_SHORT).show()
                 }
                 is ListenTogetherEvent.Kicked -> {
-                    Toast.makeText(context, "Kicked: ${event.reason}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "已被移出：${event.reason}", Toast.LENGTH_SHORT).show()
                 }
                 is ListenTogetherEvent.ConnectionError -> {
-                    Toast.makeText(context, "Connection error: ${event.error}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "连接错误：${event.error}", Toast.LENGTH_SHORT).show()
                 }
                 is ListenTogetherEvent.ServerError -> {
-                    Toast.makeText(context, "Error: ${event.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "错误：${event.message}", Toast.LENGTH_SHORT).show()
                 }
                 else -> {}
             }

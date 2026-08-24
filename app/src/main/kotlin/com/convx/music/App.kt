@@ -122,10 +122,9 @@ class App : Application(), SingletonImageLoader.Factory {
             gl = settings[ContentCountryKey]?.takeIf { it != SYSTEM_DEFAULT }
                 ?: locale.country.takeIf { it in CountryCodeToName }
                 ?: "US",
+            // Forced Simplified Chinese content language by default.
             hl = settings[ContentLanguageKey]?.takeIf { it != SYSTEM_DEFAULT }
-                ?: locale.language.takeIf { it in LanguageCodeToName }
-                ?: languageTag.takeIf { it in LanguageCodeToName }
-                ?: "en"
+                ?: "zh-CN"
         )
 
         if (languageTag == "zh-TW") {
@@ -248,7 +247,7 @@ class App : Application(), SingletonImageLoader.Factory {
                     val effectiveAppLocale = appLanguage
                         ?.takeUnless { it == SYSTEM_DEFAULT }
                         ?.let { Locale.forLanguageTag(it) }
-                        ?: systemLocale
+                        ?: Locale.forLanguageTag("zh-CN")
 
                     YouTube.locale = YouTubeLocale(
                         gl = contentCountry?.takeIf { it != SYSTEM_DEFAULT }
@@ -256,9 +255,7 @@ class App : Application(), SingletonImageLoader.Factory {
                             ?: systemLocale.country.takeIf { it in CountryCodeToName }
                             ?: "US",
                         hl = contentLanguage?.takeIf { it != SYSTEM_DEFAULT }
-                            ?: effectiveAppLocale.toLanguageTag().takeIf { it in LanguageCodeToName }
-                            ?: effectiveAppLocale.language.takeIf { it in LanguageCodeToName }
-                            ?: "en"
+                            ?: "zh-CN"
                     )
                 }
         }

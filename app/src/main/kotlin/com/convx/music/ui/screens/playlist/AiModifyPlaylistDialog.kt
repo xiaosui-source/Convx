@@ -139,7 +139,7 @@ fun AiModifyPlaylistDialog(
                             },
                             enabled = prompt.isNotBlank()
                         ) {
-                            Text("Start")
+                            Text("开始")
                         }
                     }
                 } else {

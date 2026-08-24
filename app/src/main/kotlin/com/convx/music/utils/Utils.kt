@@ -12,6 +12,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import racra.compose.smooth_corner_rect_library.AbsoluteSmoothCornerShape
 import androidx.compose.ui.graphics.Shape
+import com.convx.music.constants.AppLanguageKey
+import com.convx.music.constants.SYSTEM_DEFAULT
 import java.util.Locale
 import java.util.concurrent.ConcurrentHashMap
 fun reportException(throwable: Throwable) {
@@ -23,6 +25,34 @@ fun setAppLocale(context: Context, locale: Locale) {
     val config = Configuration(context.resources.configuration)
     config.setLocale(locale)
     context.resources.updateConfiguration(config, context.resources.displayMetrics)
+}
+
+/**
+ * The app's effective locale: the user's explicit choice from Settings, or
+ * Simplified Chinese (zh-CN) when unset / set to "follow system".
+ *
+ * Convx is forced to default to Simplified Chinese so the UI no longer
+ * follows the system language for fresh installs.
+ */
+fun Context.effectiveAppLocale(): Locale {
+    val stored = dataStore[AppLanguageKey]
+    return stored
+        ?.takeUnless { it == SYSTEM_DEFAULT }
+        ?.let { Locale.forLanguageTag(it) }
+        ?: Locale.forLanguageTag("zh-CN")
+}
+
+/**
+ * Returns a context whose configuration is pinned to [effectiveAppLocale].
+ * Call from [android.app.Activity.attachBaseContext] so every Activity (and
+ * therefore every Compose screen) renders in Simplified Chinese by default,
+ * regardless of the system language. Works on all API levels, including
+ * Android 13+ where per-app locales are otherwise system-managed.
+ */
+fun Context.applyForcedLocale(): Context {
+    val config = Configuration(resources.configuration)
+    config.setLocale(effectiveAppLocale())
+    return createConfigurationContext(config)
 }
 
 // A radius only ever yields three distinct shapes (single / first / last), but

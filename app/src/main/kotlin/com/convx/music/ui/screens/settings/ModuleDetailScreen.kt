@@ -223,7 +223,7 @@ fun ModuleDetailScreen(
                     onDismissRequest = { qualityExpanded = false },
                 ) {
                     DropdownMenuItem(
-                        text = { Text("Default") },
+                        text = { Text("默认") },
                         onClick = {
                             updateModuleSetting("quality", "")
                             qualityExpanded = false
@@ -267,7 +267,7 @@ fun ModuleDetailScreen(
                     onDismissRequest = { tidalQualityExpanded = false },
                 ) {
                     DropdownMenuItem(
-                        text = { Text("Default") },
+                        text = { Text("默认") },
                         onClick = {
                             updateModuleSetting("tidalQuality", "")
                             tidalQualityExpanded = false
