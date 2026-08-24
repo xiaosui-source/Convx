@@ -31,8 +31,8 @@ Convx is a single Android Studio project (Gradle multi-module). The pieces you'l
 
 ## 🐞 Reporting Bugs
 
-Open an [issue](https://github.com/cosmictaserdev-creator/Convx/issues) with repro steps, your Android version/device, and `adb logcat` output if it's a crash. For anything real-time (playback glitches, Listen Together sync), a screen recording helps a lot.
+Open an [issue](https://github.com/xiaosui-source/Convx/issues) with repro steps, your Android version/device, and `adb logcat` output if it's a crash. For anything real-time (playback glitches, Listen Together sync), a screen recording helps a lot.
 
 ## 💬 Questions
 
-Ask in the [Discord](https://discord.gg/Ejeb4cmzfd) before starting anything large — happy to point you at the right file instead of you reverse-engineering it.
+Ask in the [Discord](https://github.com/xiaosui-source/Convx) before starting anything large — happy to point you at the right file instead of you reverse-engineering it.

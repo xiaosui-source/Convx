@@ -20,12 +20,6 @@ object ListenTogetherServers {
     private const val ServersJson = """
         [
           {
-            "name": "Convx Sync",
-            "url": "wss://convx-sync.cosmictaser-dev.workers.dev",
-            "location": "Global (edge)",
-            "operator": "Convx"
-          },
-          {
             "name": "Hugging Face Sync",
             "url": "wss://devilmi-vivi-music-listen-together.hf.space",
             "location": "Global",

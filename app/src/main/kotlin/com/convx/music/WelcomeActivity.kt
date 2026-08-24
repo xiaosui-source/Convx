@@ -550,7 +550,7 @@ fun WelcomePagerScreen(onFinished: () -> Unit) {
                                 )
                             },
                             onClick = {
-                                uriHandler.safeOpenUri(context, "https://github.com/cosmictaserdev-creator/Convx")
+                                uriHandler.safeOpenUri(context, "https://github.com/xiaosui-source/Convx")
                             }
                         )
 
@@ -571,7 +571,7 @@ fun WelcomePagerScreen(onFinished: () -> Unit) {
                                 )
                             },
                             onClick = {
-                                uriHandler.safeOpenUri(context, "https://discord.gg/Ejeb4cmzfd")
+                                uriHandler.safeOpenUri(context, "https://github.com/xiaosui-source/Convx")
                             }
                         )
 

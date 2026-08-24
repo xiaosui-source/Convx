@@ -3,12 +3,12 @@
   <h3>Convx is an open-source, Liquid Glass music player for Android</h3>
 
   <p>
-    <a href="https://github.com/cosmictaserdev-creator/Convx/releases/tag/v1.5.2">
+    <a href="https://github.com/xiaosui-source/Convx/releases/tag/v1.5.2">
       <img src="https://img.shields.io/badge/%E2%AC%87%EF%B8%8F%20DOWNLOAD%20CONVX%201.5.2-4CAF50?style=for-the-badge&logo=android&logoColor=white" alt="Download Convx 1.5.2">
     </a>
   </p>
   <p>
-    <b><a href="https://github.com/cosmictaserdev-creator/Convx/releases/tag/v1.5.2">⬇️ DOWNLOAD CONVX 1.5.2</a></b>
+    <b><a href="https://github.com/xiaosui-source/Convx/releases/tag/v1.5.2">⬇️ DOWNLOAD CONVX 1.5.2</a></b>
     — Latest release. Works on Android 8.0+.
   </p>
 
@@ -43,26 +43,26 @@
   </div>
 
   <p>
-    <a href="https://github.com/cosmictaserdev-creator/Convx/releases">
-      <img src="https://img.shields.io/github/downloads/cosmictaserdev-creator/Convx/total?style=for-the-badge&color=blue" alt="Downloads">
+    <a href="https://github.com/xiaosui-source/Convx/releases">
+      <img src="https://img.shields.io/github/downloads/xiaosui-source/Convx/total?style=for-the-badge&color=blue" alt="Downloads">
     </a>
     <a href="LICENSE">
-      <img src="https://img.shields.io/github/license/cosmictaserdev-creator/Convx?style=for-the-badge" alt="License">
+      <img src="https://img.shields.io/github/license/xiaosui-source/Convx?style=for-the-badge" alt="License">
     </a>
-    <a href="https://discord.gg/Ejeb4cmzfd">
+    <a href="https://github.com/xiaosui-source/Convx">
       <img src="https://img.shields.io/badge/Discord-Join%20Us-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join Discord">
     </a>
-    <a href="https://ko-fi.com/cosmictaser">
+    <a href="https://github.com/sponsors/xiaosui-source">
       <img src="https://img.shields.io/badge/Ko--fi-Support%20Us-FF5E5B?style=for-the-badge&logo=kofi&logoColor=white" alt="Support on Ko-fi">
     </a>
-    <a href="https://cosmictaser.de5.net">
+    <a href="https://github.com/xiaosui-source">
       <img src="https://img.shields.io/badge/Convx-Website-8A2BE2?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Visit Convx Website">
     </a>
   </p>
   <p>
-    ☕ <b>Support:</b> <a href="https://ko-fi.com/cosmictaser">Ko-fi</a> &nbsp;•&nbsp;
-    💸 <b>UPI:</b> <code>cosmictaser@okicici</code> &nbsp;•&nbsp;
-    🌐 <b>Website:</b> <a href="https://cosmictaser.de5.net">cosmictaser.de5.net</a>
+    ☕ <b>Support:</b> <a href="https://github.com/sponsors/xiaosui-source">Sponsor</a> &nbsp;•&nbsp;
+    💸 <b>GitHub:</b> <code>xiaosui-source</code> &nbsp;•&nbsp;
+    🌐 <b>Website:</b> <a href="https://github.com/xiaosui-source">github.com/xiaosui-source</a>
   </p>
 </div>
 
@@ -197,14 +197,14 @@
         <h3>💬 Community & Support</h3>
         <p>Connect with other listeners, suggest features, report bugs, and stay updated on releases.</p>
         <br>
-        <a href="https://discord.gg/Ejeb4cmzfd">
+        <a href="https://github.com/xiaosui-source/Convx">
           <img src="https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join Discord">
         </a>
         <br><br>
         <sub>
-          <a href="https://github.com/cosmictaserdev-creator/Convx/issues">🐞 Report Bugs</a> &nbsp;•&nbsp;
-          <a href="https://github.com/cosmictaserdev-creator/Convx/discussions">💬 Discussions</a> &nbsp;•&nbsp;
-          <a href="https://github.com/cosmictaserdev-creator/Convx/releases">🚀 Releases</a>
+          <a href="https://github.com/xiaosui-source/Convx/issues">🐞 Report Bugs</a> &nbsp;•&nbsp;
+          <a href="https://github.com/xiaosui-source/Convx/discussions">💬 Discussions</a> &nbsp;•&nbsp;
+          <a href="https://github.com/xiaosui-source/Convx/releases">🚀 Releases</a>
         </sub>
       </td>
     </tr>
@@ -217,7 +217,7 @@
 
   <h2>🙏 Credits</h2>
 
-  <p>Convx is developed and maintained by <a href="https://github.com/cosmictaserdev-creator">Aryan (CosmicTaser)</a>. See <a href="https://cosmictaser.de5.net">cosmic-taser.netlify.app</a> for the portfolio.</p>
+  <p>Convx is developed and maintained by <a href="https://github.com/xiaosui-source">xiaosui-source</a>. See <a href="https://github.com/xiaosui-source">cosmic-taser.netlify.app</a> for the portfolio.</p>
 
   <table border="0" cellpadding="10" cellspacing="0" width="90%">
     <tr valign="top">

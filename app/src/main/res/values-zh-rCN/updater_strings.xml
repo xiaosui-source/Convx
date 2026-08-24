@@ -19,10 +19,9 @@
     <string name="checking_for_updates">正在检查更新…</string>
     <string name="collaborator_role">协作者</string>
     <string name="collaborator_section">协作者</string>
-    <string name="collaborator_tboyke">T-Boyke</string>
     <string name="community_section">社区</string>
     <string name="current_version_v">当前版本：%1$s</string>
-    <string name="developer_name">Aryan (CosmicTaser)</string>
+    <string name="developer_name">xiaosui-source</string>
     <string name="developer_section">开发者</string>
     <string name="discord_channel">Discord</string>
     <string name="donate">捐赠</string>

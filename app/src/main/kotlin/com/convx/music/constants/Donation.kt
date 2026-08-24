@@ -5,6 +5,6 @@
 
 package com.convx.music.constants
 
-const val DonationUpiId = "cosmictaser@okicici"
-const val DonationUpiUri = "upi://pay?pa=cosmictaser%40okicici&pn=CosmicTaser&cu=INR"
-const val DonationKofiUrl = "https://ko-fi.com/cosmictaser"
+const val DonationUpiId = "github.com/xiaosui-source"
+const val DonationUpiUri = "https://github.com/xiaosui-source"
+const val DonationKofiUrl = "https://github.com/sponsors/xiaosui-source"

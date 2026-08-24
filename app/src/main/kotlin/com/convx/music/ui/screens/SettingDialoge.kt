@@ -314,7 +314,7 @@ fun SettingDialoge(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(2.dp, Alignment.CenterHorizontally)
                 ) {
-                    TextButton(onClick = { uriHandler.openUri("https://cosmictaser.de5.net") }) {
+                    TextButton(onClick = { uriHandler.openUri("https://github.com/xiaosui-source") }) {
                         Text(
                             text = "Privacy Policy",
                             fontWeight = FontWeight.Light,
@@ -326,7 +326,7 @@ fun SettingDialoge(
                     }
                 
                     Text(text = "•", color = onPrimaryColor)
-                    TextButton(onClick = { uriHandler.openUri("https://cosmictaser.de5.net") }) {
+                    TextButton(onClick = { uriHandler.openUri("https://github.com/xiaosui-source") }) {
                         Text(
                             text = "Terms of Service",
                             fontWeight = FontWeight.Light,
