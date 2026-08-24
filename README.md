@@ -53,7 +53,7 @@
       <img src="https://img.shields.io/badge/Discord-Join%20Us-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join Discord">
     </a>
     <a href="https://github.com/sponsors/xiaosui-source">
-      <img src="https://img.shields.io/badge/Ko--fi-Support%20Us-FF5E5B?style=for-the-badge&logo=kofi&logoColor=white" alt="Support on Ko-fi">
+      <img src="https://img.shields.io/badge/Sponsor-Support%20Us-FF5E5B?style=for-the-badge&logo=github&logoColor=white" alt="Sponsor this project">
     </a>
     <a href="https://github.com/xiaosui-source">
       <img src="https://img.shields.io/badge/Convx-Website-8A2BE2?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Visit Convx Website">
