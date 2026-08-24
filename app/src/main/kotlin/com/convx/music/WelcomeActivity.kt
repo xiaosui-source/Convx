@@ -64,7 +64,6 @@ import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.KeyboardArrowDown
 import androidx.compose.material.icons.rounded.Notifications
 import androidx.compose.material.icons.rounded.Star
-import androidx.compose.material.icons.rounded.SystemUpdate
 import androidx.compose.material.icons.rounded.CloudDownload
 import androidx.compose.material.icons.rounded.HighQuality
 import androidx.compose.material.icons.rounded.Lyrics
@@ -251,14 +250,6 @@ fun WelcomePagerScreen(onFinished: () -> Unit) {
         )
     }
 
-    var canInstallPackages by remember {
-        mutableStateOf(
-            if (BuildConfig.FLAVOR.contains("gms") && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                runCatching { context.packageManager.canRequestPackageInstalls() }.getOrDefault(false)
-            } else true
-        )
-    }
-
     var isLastPageScrolledToEnd by remember { mutableStateOf(true) }
 
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -270,9 +261,6 @@ fun WelcomePagerScreen(onFinished: () -> Unit) {
                         context,
                         Manifest.permission.POST_NOTIFICATIONS
                     ) == PackageManager.PERMISSION_GRANTED
-                }
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    canInstallPackages = runCatching { context.packageManager.canRequestPackageInstalls() }.getOrDefault(false)
                 }
             }
         }
@@ -286,14 +274,6 @@ fun WelcomePagerScreen(onFinished: () -> Unit) {
             hasNotificationPermission = isGranted
         }
     )
-
-    val installParamsLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.StartActivityForResult()
-    ) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            canInstallPackages = runCatching { context.packageManager.canRequestPackageInstalls() }.getOrDefault(false)
-        }
-    }
 
     val pages = listOf(
         OnboardingPageInfo(
@@ -462,119 +442,6 @@ fun WelcomePagerScreen(onFinished: () -> Unit) {
                             }
                         )
 
-                        if (BuildConfig.FLAVOR.contains("gms", ignoreCase = true)) {
-                            Spacer(modifier = Modifier.height(2.dp))
-
-                            PermissionCard(
-                                icon = rememberVectorPainter(Icons.Rounded.SystemUpdate),
-                                iconColor = Color(0xFFffb683),
-                                iconTint = Color(0xFF753403),
-                                title = stringResource(com.convx.music.R.string.perm_install_title),
-                                description = stringResource(com.convx.music.R.string.perm_install_desc),
-                                shape = bottomCardShape,
-                                control = {
-                                    Icon(
-                                        imageVector = if (canInstallPackages) Icons.Rounded.Check else Icons.Rounded.ChevronRight,
-                                        contentDescription = null,
-                                        tint = if (canInstallPackages) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
-                                    )
-                                },
-                                onClick = {
-                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                        val intent =
-                                            Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES).apply {
-                                                data = Uri.parse("package:${context.packageName}")
-                                            }
-                                        installParamsLauncher.launch(intent)
-                                    }
-                                }
-                            )
-                        }
-
-                        Spacer(modifier = Modifier.height(100.dp))
-                    }
-                }
-            }
-        ),
-        OnboardingPageInfo(
-            content = { _ ->
-                Column(
-                    modifier = Modifier.fillMaxSize(),
-                    horizontalAlignment = Alignment.Start
-                ) {
-                    Spacer(modifier = Modifier.height(80.dp))
-
-                    Text(
-                        text = "加入我们的",
-                        style = thinHeaderStyle,
-                        color = MaterialTheme.colorScheme.onBackground
-                    )
-                    Text(
-                        text = "社区",
-                        fontFamily = GoogleSansFlex,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 48.sp,
-                        color = MaterialTheme.colorScheme.primary,
-                        lineHeight = 56.sp
-                    )
-
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    Text(
-                        text = "Convx 是开源的，依靠社区支持成长。你的帮助意义重大！",
-                        style = MaterialTheme.typography.bodyLarge.copy(
-                            fontFamily = GoogleSansFlex
-                        ),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-
-                    Spacer(modifier = Modifier.height(32.dp))
-
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .verticalScroll(rememberScrollState())
-                    ) {
-                        PermissionCard(
-                            icon = rememberVectorPainter(Icons.Rounded.Star),
-                            iconColor = Color(0xFFfff1a8),
-                            iconTint = Color(0xFF8d6e00),
-                            title = "在 GitHub 上点赞",
-                            description = "为我们的仓库点赞，帮助 Convx 触达更多人。",
-                            shape = topCardShape,
-                            control = {
-                                Icon(
-                                    imageVector = Icons.Rounded.ChevronRight,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                            },
-                            onClick = {
-                                uriHandler.safeOpenUri(context, "https://github.com/xiaosui-source/Convx")
-                            }
-                        )
-
-                        Spacer(modifier = Modifier.height(2.dp))
-
-                        PermissionCard(
-                            icon = painterResource(com.convx.music.R.drawable.discord),
-                            iconColor = Color(0xFF67d4ff),
-                            iconTint = Color(0xFF004e5d),
-                            title = "加入 Discord",
-                            description = "获取最新动态并与社区交流。",
-                            shape = bottomCardShape,
-                            control = {
-                                Icon(
-                                    imageVector = Icons.Rounded.ChevronRight,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                            },
-                            onClick = {
-                                uriHandler.safeOpenUri(context, "https://github.com/xiaosui-source/Convx")
-                            }
-                        )
-
                         Spacer(modifier = Modifier.height(100.dp))
                     }
                 }
@@ -685,19 +552,6 @@ fun WelcomePagerScreen(onFinished: () -> Unit) {
                                 description = stringResource(com.convx.music.R.string.feat_discord_desc),
                                 shape = middleCardShape
                             )
-
-                            if (BuildConfig.FLAVOR.contains("gms", ignoreCase = true)) {
-                                Spacer(modifier = Modifier.height(2.dp))
-
-                                FeatureCard(
-                                    icon = rememberVectorPainter(Icons.Rounded.SystemUpdate),
-                                    iconColor = Color(0xFF67d4ff),
-                                    iconTint = Color(0xFF004e5d),
-                                    title = stringResource(com.convx.music.R.string.feat_update_title),
-                                    description = stringResource(com.convx.music.R.string.feat_update_desc),
-                                    shape = middleCardShape
-                                )
-                            }
 
                             Spacer(modifier = Modifier.height(2.dp))
 

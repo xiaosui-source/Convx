@@ -88,11 +88,7 @@ import com.convx.music.ui.screens.recognition.RecognitionScreen
 import com.convx.music.ui.screens.recognition.RecognitionHistoryScreen
 import com.convx.music.ui.screens.settings.ModuleSourceScreen
 import com.convx.music.ui.screens.settings.ModuleDetailScreen
-import com.convx.music.ui.screens.settings.UpdateSettings
 import com.convx.music.ui.screens.wrapped.WrappedScreen
-import com.convx.music.vivimusic.updater.UpdateScreen
-import com.convx.music.vivimusic.changelog.ChangelogScreen
-import com.convx.music.vivimusic.commitscreen.CommitScreen
 import com.convx.music.ui.screens.equalizer.axion.AxionEqScreen
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
@@ -358,10 +354,6 @@ fun NavGraphBuilder.navigationBuilder(
         YouTubeBrowseScreen(navController)
     }
 
-    sharedComposable("settings/update") {
-       UpdateSettings(navController, scrollBehavior)
-    }
-
     sharedComposable("settings/account") {
         AccountSettingsScreen(navController, scrollBehavior)
     }
@@ -499,10 +491,6 @@ fun NavGraphBuilder.navigationBuilder(
         AboutScreen(navController, scrollBehavior)
     }
 
-    sharedComposable("update") {
-        UpdateScreen(navController)
-    }
-
     sharedComposable("login") {
         LoginScreen(navController)
     }
@@ -533,12 +521,6 @@ fun NavGraphBuilder.navigationBuilder(
 
     sharedComposable("recognition_history") {
         RecognitionHistoryScreen(navController)
-    }
-    sharedComposable("settings/changelog") {
-        ChangelogScreen(navController,scrollBehavior)
-    }
-    sharedComposable("settings/commits") {
-        CommitScreen(navController, scrollBehavior)
     }
 }
 

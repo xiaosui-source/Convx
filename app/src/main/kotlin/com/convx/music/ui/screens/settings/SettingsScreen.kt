@@ -59,7 +59,6 @@ import com.convx.music.ui.component.Material3SettingsItem
 import com.convx.music.ui.theme.AppleTokens
 import com.convx.music.ui.utils.appTopBarWindowInsets
 import com.convx.music.ui.utils.backToMain
-import com.convx.music.vivimusic.updater.getUpdateAvailableState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -68,8 +67,6 @@ fun SettingsScreen(
     scrollBehavior: TopAppBarScrollBehavior,
 ) {
     val context = androidx.compose.ui.platform.LocalContext.current
-    val isUpdateAvailable = getUpdateAvailableState(context) &&
-        com.convx.music.vivimusic.updater.getAutoUpdateCheckSetting(context)
 
     var searchQuery by rememberSaveable { mutableStateOf("") }
     val searchLower = searchQuery.trim().lowercase()
@@ -133,14 +130,6 @@ fun SettingsScreen(
         item(key = "general_header") { SettingsSectionHeader("GENERAL") }
         item(key = "general_section") {
             SettingsSection {
-                SettingsNavItem(
-                    icon = painterResource(if (isUpdateAvailable) R.drawable.convx_logo else R.drawable.network_update),
-                    iconTint = if (isUpdateAvailable) MaterialTheme.colorScheme.error else Color(0xFF007AFF),
-                    title = stringResource(R.string.system_update),
-                    badge = if (isUpdateAvailable) stringResource(R.string.update_available) else null,
-                    onClick = { navController.navigate("settings/update") },
-                )
-                SettingsDivider()
                 SettingsNavItem(
                     icon = painterResource(R.drawable.palette),
                     iconTint = Color(0xFFAF52DE),

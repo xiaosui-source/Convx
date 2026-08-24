@@ -6,8 +6,6 @@
 package com.convx.music
 
 import android.app.Application
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import android.widget.Toast
@@ -167,15 +165,6 @@ class App : Application(), SingletonImageLoader.Factory {
         YouTube.useLoginForBrowse = settings[UseLoginForBrowse] ?: true
         YouTube.ipVersion = settings[IpVersionKey]?.toEnum(defaultValue = IpVersion.AUTO) ?: IpVersion.AUTO
 
-        val channel = NotificationChannel(
-            "updates",
-            getString(R.string.update_channel_name),
-            NotificationManager.IMPORTANCE_DEFAULT
-        ).apply {
-            description = getString(R.string.update_channel_desc)
-        }
-        val nm = getSystemService(NotificationManager::class.java)
-        nm.createNotificationChannel(channel)
     }
 
     private fun observeSettingsChanges() {

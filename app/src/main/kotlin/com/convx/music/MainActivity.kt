@@ -311,11 +311,6 @@ import com.convx.music.utils.applyForcedLocale
 import com.convx.music.viewmodels.HistoryViewModel
 import com.convx.music.ui.component.floatingtabbar.rememberFloatingTabBarScrollConnection
 import com.convx.music.viewmodels.HomeViewModel
-import com.convx.music.vivimusic.UpdateNotificationHelper
-import com.convx.music.vivimusic.updater.checkForUpdate
-import com.convx.music.vivimusic.updater.getAutoUpdateCheckSetting
-import com.convx.music.vivimusic.updater.getUpdateNotificationsSetting
-import com.convx.music.vivimusic.updater.saveUpdateAvailableState
 import com.valentinilk.shimmer.LocalShimmerTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -607,30 +602,6 @@ class MainActivity : ComponentActivity() {
         val enableDynamicTheme by rememberPreference(DynamicThemeKey, defaultValue = true)
         val enableHighRefreshRate by rememberPreference(EnableHighRefreshRateKey, defaultValue = true)
         val context = LocalContext.current
-
-        LaunchedEffect(Unit) {
-            if (getAutoUpdateCheckSetting(context)) {
-                // Delay to not block app startup
-                delay(2000L.milliseconds)
-                checkForUpdate(
-                    context = context,
-                    onSuccess = { latestVersion, isAvailable, _, _, _, _, _, _ ->
-                        val currentVersion = BuildConfig.VERSION_NAME
-                        Timber.tag("UpdateCheck").d("Startup check success. Latest: $latestVersion, Current: $currentVersion, isAvailable: $isAvailable")
-                        saveUpdateAvailableState(context, isAvailable)
-                        
-                        if (isAvailable && getUpdateNotificationsSetting(context)) {
-                            Timber.tag("UpdateCheck").d("Posting update notification for $latestVersion")
-                            UpdateNotificationHelper.showUpdateNotification(context, latestVersion)
-                        }
-                    },
-                    onError = {
-                        Timber.tag("UpdateCheck").e("Startup check failed")
-                        // Do not clear the state on error, in case of offline launch
-                    }
-                )
-            }
-        }
 
         LaunchedEffect(enableHighRefreshRate) {
             val window = this@MainActivity.window
@@ -1152,7 +1123,7 @@ class MainActivity : ComponentActivity() {
                         // one back-tap to root (where the bar reappears) or the back
                         // arrow's long-press (backToMain()) shortcut.
                         currentRoute?.startsWith("settings/") == true -> false
-                        currentRoute in setOf("login", "channel_picker", "equalizer", "wrapped", "update", "listen_together/chat") -> false
+                        currentRoute in setOf("login", "channel_picker", "equalizer", "wrapped", "listen_together/chat") -> false
                         else -> true
                     }
                 }
@@ -1802,7 +1773,7 @@ class MainActivity : ComponentActivity() {
                             // Pre-calculate values for graphicsLayer to avoid reading state during composition
                             val navBarTotalHeight = bottomInset + NavigationBarHeight
 
-                            if (!showRail && !showSettingDialoge && currentRoute?.startsWith("settings/") != true && currentRoute !in setOf("wrapped", "update", "listen_together/chat", "login", "equalizer", "ambient_mode")) {
+                            if (!showRail && !showSettingDialoge && currentRoute?.startsWith("settings/") != true && currentRoute !in setOf("wrapped", "listen_together/chat", "login", "equalizer", "ambient_mode")) {
                                 Box {
                                     // Apple Music-style progressive scrim: content fades out under
                                     // the floating glass bar instead of hard-clipping, so the bar
@@ -1913,7 +1884,7 @@ class MainActivity : ComponentActivity() {
 
                                 }
                             } else {
-                                if (currentRoute != "wrapped" && currentRoute != "update" && currentRoute != "listen_together/chat" && currentRoute != "ambient_mode") {
+                                if (currentRoute != "wrapped" && currentRoute != "listen_together/chat" && currentRoute != "ambient_mode") {
                                     BottomSheetPlayer(
                                         state = playerBottomSheetState,
                                         navController = navController,
