@@ -57,14 +57,15 @@ jobs:
           restore-keys: |
             gradle-deps-${{ runner.os }}-
 
-      # 生成 release keystore。keystore/ 已被 .gitignore 忽略, 不会提交回仓库,
-      # 因此每次构建在工作区重新生成即可 (build.gradle.kts 仅在文件存在时签名)
+      # 生成 release keystore。build.gradle.kts 中 file("keystore/release.keystore")
+      # 相对于 :app 模块目录, 即 app/keystore/release.keystore。
+      # keystore/ 已被 .gitignore 忽略, 不会提交回仓库, 每次构建在工作区重新生成
       - name: Generate Release Keystore
         run: |
-          mkdir -p keystore
-          if [ ! -f "keystore/release.keystore" ]; then
+          mkdir -p app/keystore
+          if [ ! -f "app/keystore/release.keystore" ]; then
             keytool -genkeypair -v \
-              -keystore "keystore/release.keystore" \
+              -keystore "app/keystore/release.keystore" \
               -alias "${{ env.KEY_ALIAS }}" \
               -keyalg RSA \
               -keysize 2048 \
